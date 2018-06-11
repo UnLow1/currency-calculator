@@ -14,21 +14,6 @@ public class Exchange {
     public Exchange() {
     }
 
-    public Exchange(String from, String to, double amount, double rate) {
-
-        this.from = from;
-        this.to = to;
-        this.amount = amount;
-        this.rate = rate;
-    }
-
-    public Exchange(String from, String to, double amount) {
-
-        this.from = from;
-        this.to = to;
-        this.amount = amount;
-    }
-
     public double getRate() {
         return rate;
     }
