@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -91,8 +90,6 @@ public class CurrencyDAOImpl implements CurrencyDAO {
 
     @Override
     public Map<String, Double> getLastMonth(Currency currency) throws IOException, JSONException {
-        Map<String, Double> lastMonth = currency.getLastMonth();
-
-        return lastMonth;
+        return currency.getLastMonth();
     }
 }

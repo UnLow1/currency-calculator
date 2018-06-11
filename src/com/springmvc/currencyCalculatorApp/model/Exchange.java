@@ -8,19 +8,7 @@ public class Exchange {
     private double rate;
 
     public void countRate(Currency from, Currency to) {
-        validate(from, to);
-
         rate = to.getRate() * amount / from.getRate();
-    }
-
-    private void validate(Currency from, Currency to) {
-        if (to == null)
-            throw new RuntimeException("Currency " + this.to + " does not exist in database. You have to add it in '\\new' page");
-
-        if (from == null)
-            throw new RuntimeException("Currency " + this.from + " does not exist in database. You have to add it in '\\new' page");
-
-
     }
 
     public Exchange() {

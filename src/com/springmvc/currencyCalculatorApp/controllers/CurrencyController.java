@@ -85,9 +85,14 @@ public class CurrencyController {
 
     private void validateLastUpdateDate(Currency currency) throws IOException, JSONException {
         Date now = new Date();
-        Date afterNowDate = new Date(currency.getLastUpdate().getTime() + 30 * MINUTE);
 
-        if (!afterNowDate.after(now)) {
+        if (currency == null)
+            throw new RuntimeException("Currency does not exist in database. You have to add it in '\\new' page");
+
+        // check if last update is older than 30 minutes
+        Date afterNow = new Date(currency.getLastUpdate().getTime() + 30 * MINUTE);
+
+        if (afterNow.before(now)) {
             currency.setRate();
             currency.setLastUpdate(now);
             currencyService.saveCurrency(currency);
@@ -163,9 +168,9 @@ public class CurrencyController {
         return "redirect:/list";
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    public Currency getCurrency(@PathVariable("id") Integer ID) {
-//        return currencyService.getCurrency(ID);
-//    }
+    @ResponseBody
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Currency getCurrency(@PathVariable("id") String name) {
+        return currencyService.getCurrency(name);
+    }
 }
