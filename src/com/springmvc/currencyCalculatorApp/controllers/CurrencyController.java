@@ -173,9 +173,4 @@ public class CurrencyController {
     public Currency getCurrency(@PathVariable("id") String name) {
         return currencyService.getCurrency(name);
     }
-
-    @RequestMapping("*")
-    public String pageNotFound() {
-        return "fileNotFound";
-    }
 }
